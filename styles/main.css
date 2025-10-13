@@ -49,3 +49,26 @@ body{
 }
 /* Accessible focus states */
 :focus{ outline: 3px solid rgba(99,102,241,0.18); outline-offset: 3px; }
+/* Responsive overflow & hero stack fixes */
+/* Prevent any accidental horizontal scroll from transforms or positioned elements */
+html, body { overflow-x: hidden; }
+
+/* On narrower viewports, clip and convert the stacked hero cards into a vertical stack
+   so they don't push content or create large empty space to the right. */
+@media (max-width: 1023px) {
+  .hero-cards-wrapper { overflow: hidden; }
+  .hero-cards-wrapper [data-animate] {
+    /* remove manual offsets/transforms applied for large-screen motion */
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Ensure small screens keep comfortable horizontal padding even where utility classes
+   may be overridden or elements become full-width. This mirrors the px-4 used in HTML. */
+@media (max-width: 640px) {
+  header, main, #mobile-menu { padding-left: 1rem; padding-right: 1rem; }
+}
