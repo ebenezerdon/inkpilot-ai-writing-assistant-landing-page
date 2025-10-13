@@ -1,0 +1,51 @@
+/* Main custom CSS for InkPilot landing page */
+:root{
+  --accent: #4f46e5; /* indigo-600 */
+  --muted: #6b7280; /* gray-500 */
+}
+html,body{
+  height:100%;
+}
+body{
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+/* Card subtle hover */
+.card{
+  transition: transform 240ms cubic-bezier(.2,.9,.3,1), box-shadow 240ms;
+}
+.card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(15,23,42,0.08);
+}
+/* Pricing toggle animation */
+#billing-toggle{
+  width:56px;
+  height:30px;
+  display:inline-flex;
+  align-items:center;
+  padding:3px;
+}
+#toggle-knob{
+  width:24px;
+  height:24px;
+  border-radius:9999px;
+  transition: transform 260ms cubic-bezier(.2,.9,.3,1), background 260ms;
+}
+#billing-toggle[aria-checked="true"] #toggle-knob{
+  transform: translateX(26px);
+}
+/* Modal */
+#modal{ display:flex; }
+#modal.hidden{ display:none; }
+/* FAQ animation */
+.faq-panel{
+  transition: max-height 300ms ease, opacity 300ms ease;
+}
+/* Small responsive tweaks */
+@media (prefers-reduced-motion: reduce){
+  .card, #toggle-knob, .faq-panel { transition: none !important; }
+}
+/* Accessible focus states */
+:focus{ outline: 3px solid rgba(99,102,241,0.18); outline-offset: 3px; }

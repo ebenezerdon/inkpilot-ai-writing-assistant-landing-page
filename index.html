@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>InkPilot — AI Writing Assistant for Fast, Polished Copy</title>
+  <meta name="description" content="InkPilot: AI-powered writing assistant with demos, templates, flexible pricing, and conversion-first UX.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="styles/main.css">
+
+  <style type="text/tailwindcss" data-teda="tailwind-apply">
+    @layer components {
+      .btn-primary { @apply bg-indigo-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300; }
+      .btn-ghost { @apply bg-white border border-gray-200 px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-100; }
+      .pill-toggle { @apply inline-flex p-1 bg-gray-100 rounded-full; }
+      .card { @apply bg-white rounded-xl shadow-sm p-5 border border-gray-50; }
+      .accent { @apply text-indigo-600; }
+    }
+  </style>
+
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+  <header class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3 text-indigo-700 no-underline">
+      <div class="w-10 h-10 rounded-md bg-indigo-600 flex items-center justify-center text-white font-semibold">IP</div>
+      <span class="text-lg font-semibold">InkPilot</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-4">
+      <a href="#demos" class="text-sm hover:underline">Demos</a>
+      <a href="#templates" class="text-sm hover:underline">Templates</a>
+      <a href="#pricing" class="text-sm hover:underline">Pricing</a>
+      <a href="#faq" class="text-sm hover:underline">FAQ</a>
+      <a href="#try" class="btn-primary ml-2">Try demos</a>
+    </nav>
+    <button id="mobile-toggle" class="md:hidden btn-ghost" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+  </header>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden max-w-7xl mx-auto px-6 hidden">
+    <div class="py-4 flex flex-col gap-3">
+      <a href="#demos" class="text-base">Demos</a>
+      <a href="#templates" class="text-base">Templates</a>
+      <a href="#pricing" class="text-base">Pricing</a>
+      <a href="#faq" class="text-base">FAQ</a>
+      <a href="#try" class="btn-primary w-full text-center">Try demos</a>
+    </div>
+  </div>
+
+  <!-- Hero - creative centered layout -->
+  <main class="max-w-7xl mx-auto px-6">
+    <section class="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-7 order-2 lg:order-1">
+        <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Write faster. Sound smarter. Ship copy that converts.</h1>
+        <p class="mt-4 max-w-xl text-gray-600">InkPilot uses purpose-built writing demos and templates to help marketers, founders, and creators produce high-quality copy in seconds. Explore demos, preview templates, and choose a plan with a single toggle.</p>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#demos" class="btn-primary inline-flex items-center">Explore demos</a>
+          <a href="#templates" class="btn-ghost inline-flex items-center">Browse templates</a>
+          <button id="play-tour" class="ml-2 inline-flex items-center text-sm text-gray-700 hover:underline">Quick tour</button>
+        </div>
+
+        <div class="mt-8 flex gap-6 items-center">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-md bg-indigo-50 flex items-center justify-center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-indigo-600" aria-hidden>
+                <path d="M12 2v20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M5 9h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-sm font-semibold">Fast outcomes</div>
+              <div class="text-xs text-gray-500">Generate polished drafts in seconds</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-md bg-indigo-50 flex items-center justify-center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-indigo-600" aria-hidden>
+                <path d="M4 7h16M4 12h10M4 17h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-sm font-semibold">Conversion-focused</div>
+              <div class="text-xs text-gray-500">Templates and copies crafted for action</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 order-1 lg:order-2">
+        <!-- Visual centerpiece: stacked demo cards, slightly rotated for motion -->
+        <div class="relative mx-auto max-w-md">
+          <div class="transform -rotate-3 scale-100 card mb-4" style="transition: transform .4s;" data-animate>
+            <div class="flex items-start gap-3">
+              <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-600 to-indigo-400 flex items-center justify-center text-white font-bold">A</div>
+              <div>
+                <div class="text-sm font-semibold">Subject Line Builder</div>
+                <div class="text-xs text-gray-500 mt-1">Short, attention-grabbing subject lines.</div>
+              </div>
+            </div>
+            <div class="mt-3 text-sm text-gray-700">Boost open rates with tailored subject lines generated from your product name and tone.</div>
+            <div class="mt-4 flex gap-2">
+              <button class="btn-primary run-demo" data-demo="subject">Run demo</button>
+              <button class="btn-ghost preview-template" data-template="subject-line">Preview template</button>
+            </div>
+          </div>
+
+          <div class="transform rotate-2 scale-95 card mb-4" style="position:relative; top:-18px; left:10px; transition: transform .4s;" data-animate>
+            <div class="flex items-start gap-3">
+              <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-600 to-emerald-400 flex items-center justify-center text-white font-bold">B</div>
+              <div>
+                <div class="text-sm font-semibold">Landing Page Hero</div>
+                <div class="text-xs text-gray-500 mt-1">High-converting hero copy in one click.</div>
+              </div>
+            </div>
+            <div class="mt-3 text-sm text-gray-700">Create concise hero lines that communicate value and urgency.</div>
+            <div class="mt-4 flex gap-2">
+              <button class="btn-primary run-demo" data-demo="hero">Run demo</button>
+              <button class="btn-ghost preview-template" data-template="hero-hero">Preview template</button>
+            </div>
+          </div>
+
+          <div class="transform -rotate-1 scale-98 card" style="position:relative; top:-36px; left:-6px; transition: transform .4s;" data-animate>
+            <div class="flex items-start gap-3">
+              <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-rose-600 to-rose-400 flex items-center justify-center text-white font-bold">C</div>
+              <div>
+                <div class="text-sm font-semibold">Cold Email Opener</div>
+                <div class="text-xs text-gray-500 mt-1">Warm, personal openers tailored to prospects.</div>
+              </div>
+            </div>
+            <div class="mt-3 text-sm text-gray-700">Personalized openers to increase reply rates.</div>
+            <div class="mt-4 flex gap-2">
+              <button class="btn-primary run-demo" data-demo="email">Run demo</button>
+              <button class="btn-ghost preview-template" data-template="cold-email">Preview template</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demos section -->
+    <section id="demos" class="mt-16">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl font-bold">Interactive demos — see results instantly</h2>
+        <p class="mt-2 text-gray-600">Try one of the built-in demos to see how InkPilot performs on real inputs. Outputs are editable and copyable.</p>
+      </div>
+
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Cards duplicated for discoverability; JS will wire buttons -->
+        <div class="card" aria-labelledby="demo-subject">
+          <h3 id="demo-subject" class="font-semibold">Subject Line Builder</h3>
+          <p class="text-sm text-gray-500 mt-1">Enter a product or topic to get 5 subject suggestions.</p>
+          <div class="mt-4">
+            <input type="text" placeholder="Product, topic, or keyword" class="w-full border border-gray-200 rounded-md p-2 demo-input" data-demo="subject" aria-label="Subject demo input">
+            <div class="mt-3 flex gap-2">
+              <button class="btn-primary run-demo" data-demo="subject">Run demo</button>
+              <button class="btn-ghost" data-copy-example data-demo="subject">Copy best</button>
+            </div>
+            <div class="mt-3 output-area text-sm text-gray-700" data-output-for="subject" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="card" aria-labelledby="demo-hero">
+          <h3 id="demo-hero" class="font-semibold">Landing Page Hero</h3>
+          <p class="text-sm text-gray-500 mt-1">Share what your product does; get a clear hero headline and subhead.</p>
+          <div class="mt-4">
+            <input type="text" placeholder="What do you offer?" class="w-full border border-gray-200 rounded-md p-2 demo-input" data-demo="hero" aria-label="Hero demo input">
+            <div class="mt-3 flex gap-2">
+              <button class="btn-primary run-demo" data-demo="hero">Run demo</button>
+              <button class="btn-ghost" data-copy-example data-demo="hero">Copy hero</button>
+            </div>
+            <div class="mt-3 output-area text-sm text-gray-700" data-output-for="hero" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="card" aria-labelledby="demo-email">
+          <h3 id="demo-email" class="font-semibold">Cold Email Opener</h3>
+          <p class="text-sm text-gray-500 mt-1">Provide prospect role and a sentence about your value.</p>
+          <div class="mt-4">
+            <input type="text" placeholder="Prospect role or company" class="w-full border border-gray-200 rounded-md p-2 demo-input" data-demo="email" aria-label="Email demo input">
+            <div class="mt-3 flex gap-2">
+              <button class="btn-primary run-demo" data-demo="email">Run demo</button>
+              <button class="btn-ghost" data-copy-example data-demo="email">Copy opener</button>
+            </div>
+            <div class="mt-3 output-area text-sm text-gray-700" data-output-for="email" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Templates -->
+    <section id="templates" class="mt-16">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-bold">Templates — starting points that convert</h2>
+          <p class="mt-1 text-gray-600">Filter by use case and copy to clipboard. Saved templates persist between visits.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <label class="text-sm text-gray-500">Filter</label>
+          <select id="template-filter" class="border border-gray-200 rounded-md p-2 text-sm">
+            <option value="all">All</option>
+            <option value="sales">Sales</option>
+            <option value="marketing">Marketing</option>
+            <option value="email">Email</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" id="templates-grid">
+        <!-- JS will inject template cards; include a few static cards for SEO and no-JS fallback -->
+        <article class="card" data-template-id="hero-hero">
+          <h3 class="font-semibold">Hero Headline (Short)</h3>
+          <p class="text-sm text-gray-500 mt-1">A concise headline that emphasizes benefit.</p>
+          <pre class="mt-3 text-sm bg-gray-50 p-3 rounded-md">Save time. Ship better copy. Grow faster.</pre>
+          <div class="mt-3 flex gap-2">
+            <button class="btn-primary copy-template" data-template-id="hero-hero">Copy</button>
+            <button class="btn-ghost save-template" data-template-id="hero-hero">Save</button>
+          </div>
+        </article>
+
+        <article class="card" data-template-id="subject-line">
+          <h3 class="font-semibold">Subject Line Formula</h3>
+          <p class="text-sm text-gray-500 mt-1">[Benefit] — [Reason]</p>
+          <pre class="mt-3 text-sm bg-gray-50 p-3 rounded-md">Get 2x more opens — with personalized subject lines</pre>
+          <div class="mt-3 flex gap-2">
+            <button class="btn-primary copy-template" data-template-id="subject-line">Copy</button>
+            <button class="btn-ghost save-template" data-template-id="subject-line">Save</button>
+          </div>
+        </article>
+
+        <article class="card" data-template-id="cold-email">
+          <h3 class="font-semibold">Cold Email Opener</h3>
+          <p class="text-sm text-gray-500 mt-1">Concise opener with social proof.
+          </p>
+          <pre class="mt-3 text-sm bg-gray-50 p-3 rounded-md">Hi {name}, saw {signal} — we helped {similar} cut onboarding time by 30%.</pre>
+          <div class="mt-3 flex gap-2">
+            <button class="btn-primary copy-template" data-template-id="cold-email">Copy</button>
+            <button class="btn-ghost save-template" data-template-id="cold-email">Save</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-4 text-sm text-gray-600">Saved templates: <span id="saved-count">0</span></div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="mt-16">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl font-bold">Flexible pricing that grows with you</h2>
+        <p class="mt-2 text-gray-600">Switch between monthly and annual billing to compare savings.</p>
+      </div>
+
+      <div class="mt-6 flex flex-col md:flex-row gap-4 justify-center items-center">
+        <div class="flex items-center gap-3">
+          <span class="text-sm text-gray-500">Monthly</span>
+          <div id="billing-toggle" class="pill-toggle" role="switch" aria-checked="false" tabindex="0">
+            <button id="toggle-knob" class="w-6 h-6 bg-white rounded-full shadow-sm transform transition" aria-hidden="true"></button>
+          </div>
+          <span class="text-sm text-gray-500">Annual <span class="text-xs text-green-600">Save 20%</span></span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl">
+          <div class="card text-center">
+            <div class="text-sm text-gray-500">Starter</div>
+            <div class="text-2xl font-bold mt-2" data-price-month="9" data-price-annual="86">$9/mo</div>
+            <div class="text-xs text-gray-500 mt-2">For solo users</div>
+            <div class="mt-4"><button class="btn-primary select-plan" data-plan="starter">Choose</button></div>
+          </div>
+
+          <div class="card border-2 border-indigo-100 text-center shadow-lg">
+            <div class="text-sm text-gray-500">Growth</div>
+            <div class="text-2xl font-bold mt-2" data-price-month="29" data-price-annual="290">$29/mo</div>
+            <div class="text-xs text-gray-500 mt-2">For teams</div>
+            <div class="mt-4"><button class="btn-primary select-plan" data-plan="growth">Choose</button></div>
+          </div>
+
+          <div class="card text-center">
+            <div class="text-sm text-gray-500">Scale</div>
+            <div class="text-2xl font-bold mt-2" data-price-month="99" data-price-annual="990">$99/mo</div>
+            <div class="text-xs text-gray-500 mt-2">For agencies</div>
+            <div class="mt-4"><button class="btn-primary select-plan" data-plan="scale">Choose</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 text-center text-sm text-gray-600">Selected plan: <strong id="selected-plan">None</strong></div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="mt-16">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl font-bold">Frequently asked questions</h2>
+        <div class="mt-4 space-y-3" id="faq-list">
+          <div class="card faq-item">
+            <button class="w-full text-left faq-trigger" aria-expanded="false" aria-controls="faq1">How do demos work?</button>
+            <div id="faq1" class="mt-2 faq-panel hidden text-sm text-gray-600" aria-hidden="true">Each demo uses tuned prompts and patterns. Enter your input, click Run demo, then edit or copy the result.</div>
+          </div>
+
+          <div class="card faq-item">
+            <button class="w-full text-left faq-trigger" aria-expanded="false" aria-controls="faq2">Can I save templates?</button>
+            <div id="faq2" class="mt-2 faq-panel hidden text-sm text-gray-600" aria-hidden="true">Yes. Click Save on any template. Saved templates persist locally in your browser.</div>
+          </div>
+
+          <div class="card faq-item">
+            <button class="w-full text-left faq-trigger" aria-expanded="false" aria-controls="faq3">Is there a free trial?</button>
+            <div id="faq3" class="mt-2 faq-panel hidden text-sm text-gray-600" aria-hidden="true">We offer a free trial for the Growth plan for 14 days. No credit card required for trials started from the demos page.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-20 border-t border-gray-100 pt-8 pb-12 text-center text-sm text-gray-500">
+      <div class="max-w-4xl mx-auto">Built with attention to conversion and accessibility by <a href="https://teda.dev" class="accent underline">Teda.dev</a>. © <span id="year"></span> InkPilot</div>
+    </footer>
+  </main>
+
+  <!-- Modal for demo output / quick tour -->
+  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-40" role="dialog" aria-modal="true">
+    <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full p-6 mx-4">
+      <div class="flex justify-between items-start">
+        <h3 id="modal-title" class="text-lg font-semibold">Demo output</h3>
+        <button id="modal-close" class="btn-ghost">Close</button>
+      </div>
+      <div id="modal-body" class="mt-4 text-gray-700"></div>
+      <div class="mt-4 flex justify-end gap-3">
+        <button id="modal-copy" class="btn-primary">Copy</button>
+        <button id="modal-close-2" class="btn-ghost">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/helpers.js"></script>
+  <script src="scripts/ui.js"></script>
+  <script src="scripts/main.js"></script>
+
+</body>
+</html>
